@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Info Cannabis Intake Questionnaire</title>
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="scripts/ic-calc.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles/normalize.css">
+	<link rel="stylesheet" type="text/css" href="styles/main.css">
+	<link rel="stylesheet" type="text/css" href="styles/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
+</head>
+<body>
+	<div id="logo">
+		<img src="images/ic-logo.png">
+	</div>
+	<section id="one">
+		<div id="breadcrumbs">
+			<span id="crumb1" class="text-green">Welcome</span> > <span id="crumb2">Vital Stats</span> > <span id="crumb3">Medical Information</span> > <span id ="crumb4">Cannabis Details</span> > <span id="crumb5">Done</span>
+		</div>
+	</section>
+	<section id="two">
+			<div id="question-box">
+				<div>
+					<form id="client-intake-form" name="intakeform" action="/profile" method="POST">
+						<div id="step1" class="show-it">
+							<p>Welcome to the InfoCannabis online intake form.</p>
+							<p>Getting started with InfoCannabis is easy.  Just follow the on-screen instructions and enter the required information to begin the registration process.</p>  
+							<p>The information you provide allows us to start your client file and make an initial assessment of which InfoCannabis program is the best fit for you.</p>  
+							<p>Click the arrow to get started.</p>
+						</div>
+						<div id="step2" class="show-it">
+							Given Name: <input type="text" name="usr-fname" class="form-input" required>
+							<br>
+							Last Name: <input type="text" name="usr-lname" class="form-input" required>
+							<br>
+							Age: <input type="number" min="18" max="125" name="usr-age" class="form-input" required>
+							<br>
+							Sex: <select name="usr-sex">
+								  <option value="male">Male</option>
+								  <option value="female">Female</option>
+								</select>
+						</div>
+						<div id="step3" class="show-it">
+							<!-- begin postal code validation script -->
+							<script type="text/javascript">
+								function validatePostal(sPostal) {
+	  							var rePostal = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
+	  								if(!sPostal.match(rePostal)) {
+	    							alert("Invalid Postal Code.");
+	    							return false;
+	  								}
+	  								return true;
+								}
+							</script>
+							<!-- end postal code validation script -->
+							Address: <input type="text" name="usr-address" class="form-input">
+							<br> 
+							City: <input type="text" name="usr-city" class="form-input"> 
+							<br>
+							Province: 
+							<select name="usr-prov">
+								<option value="ontario">ON</option>
+								<option value="quebec">QC</option>
+								<option value="alberta">AB</option>
+								<option value="british columbia">BC</option>
+								<option value="manitoba">MB</option>
+								<option value="new brunswick">NB</option>
+								<option value="newfoundland">NL</option>
+								<option value="northwest territories">NT</option>
+								<option value="nova scotia">NS</option>
+								<option value="nunavut">NU</option>
+								<option value="p.e.i.">PE</option>
+								<option value="saskatchewan">SK</option>
+								<option value="yukon">YT</option>
+							</select>
+							<br>
+							Postal Code: <input id="p-code" class="form-input" type="text" name="usr-post" onblur="validatePostal(this.value);">
+						</div>
+						<div id="step4" class="show-it">
+							<!-- begin e-mail validation script -->
+							<script type="text/javascript">
+								function validateEmail(sEmail) {
+	  							var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
+	  								if(!sEmail.match(reEmail)) {
+	    							alert("Invalid e-mail address.");
+	    							return false;
+	  								}
+	  								return true;
+								}
+							</script>
+							<script type="text/javascript">
+								function validatePhone(sPhone) {
+	  							var rePhone = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
+	  								if(!sPhone.match(rePhone)) {
+	    							alert("Invalid phone number.");
+	    							return false;
+	  								}
+	  								return true;
+								}
+							</script>
+							<!-- end e-mail validation script -->
+							E-mail: <input type="email" name="usr-email" class="form-input" onblur="validateEmail(this.value);">
+							<br>
+							Telephone: <input type="tel" name="usr-tel" class="form-input" onblur="validatePhone(this.value);">
+							<br>
+						</div>
+						<div id="step5" class="show-it">
+							Family Doctor: <input type="text" name="gp-name" class="form-input">
+							<br>
+							City of practice: <input type="text" name="gp-city" class="form-input">
+						</div>
+						<div id="step6" class="show-it">
+							Do you use any of the following? (check all that apply)
+							<br>
+							<br>
+
+							<label class="custom-check">Tobacco
+							  <input type="checkbox" name="tobacco" value="tobacco" class="adulterants" id="6-1">
+							  <span class="checkmark"></span>
+							</label>
+							<label class="custom-check">Alcohol
+							  <input type="checkbox" name="alcohol" value="alcohol" class="adulterants" id="6-2">
+							  <span class="checkmark"></span>
+							</label>
+							<label class="custom-check">Street Drugs
+							  <input type="checkbox" name="streets" value="street drugs" class="adulterants" id="6-3">
+							  <span class="checkmark"></span>
+							</label>
+						</div>
+						<div id="step7">
+							<div id="inserted">
+								You indicated that you use:<br><br>
+							</div>
+							<div><br>Please tell us how much and how often:</div><br>
+							<textarea name="adulterant-desc" class="free-text"></textarea>
+						</div>
+						<div id="step8" class="show-it">
+							Please check all conditions that affect you (1/3):
+							<div class="illness-container">
+								<label class="custom-check">ADD/ADHD
+								  <input type="checkbox" name="adhd" value="adhd" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Alzheimer's
+								  <input type="checkbox" name="alzh" value="alzheimers" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Anxiety
+								  <input type="checkbox" name="anxi" value="anxiety" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Arthritis
+								  <input type="checkbox" name="arth" value="arthritis" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Brain Injury
+								  <input type="checkbox" name="brai" value="brain_injury" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Cancer
+								  <input type="checkbox" name="canc" value="cancer" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Chronic Nausea
+								  <input type="checkbox" name="cnaus" value="chronic_nausea" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Chronic Pain
+								  <input type="checkbox" name="cpain" value="chronic_pain" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Crohn’s/Colitis
+								  <input type="checkbox" name="chron" value="chrons_colitis" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Depression
+								  <input type="checkbox" name="depr" value="depression" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Diabetes
+								  <input type="checkbox" name="diab" value="diabetes" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+							</div>
+						</div>
+						<div id="step9" class="show-it">
+							Please check all conditions that affect you (2/3):
+							<div class="illness-container">
+								<label class="custom-check">Eating Disorder
+								  <input type="checkbox" name="eatd" value="eating_disorder" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Epilepsy
+								  <input type="checkbox" name="epil" value="epilepsy" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Fibromyalgia
+								  <input type="checkbox" name="fibro" value="fibromyalgia" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Gastrointestinal Problems
+								  <input type="checkbox" name="gast" value="gastro_problems" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Head Injury
+								  <input type="checkbox" name="head" value="head_injury" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Hepatitis C
+								  <input type="checkbox" name="hepc" value="hepatitis_c" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">HIV/AIDS
+								  <input type="checkbox" name="aids" value="aids" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Irritable Bowel Syndrome
+								  <input type="checkbox" name="ibs" value="ibs" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Kidney Failure/Dialysis
+								  <input type="checkbox" name="kidf" value="kidney_failure" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>							
+							</div>
+						</div>
+						<div id="step10" class="show-it">
+							Please check all conditions that affect you (3/3):
+							<div class="illness-container">
+								<label class="custom-check">Migraines
+								  <input type="checkbox" name="migr" value="migraine" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Multiple Sclerosis
+								  <input type="checkbox" name="mult" value="multiple_sclerosis" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Muscle Spasms
+								  <input type="checkbox" name="spas" value="muscle_spasm" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Muscular Dystrophy
+								  <input type="checkbox" name="dyst" value="muscular_dystrophy" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Nausea
+								  <input type="checkbox" name="naus" value="nausea" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Parkinson’s Disease
+									<input type="checkbox" name="park" value="parkinsons" class="affected-by">
+									<span class="checkmark"></span>
+								</label>
+								<label class="custom-check">PTSD
+								  <input type="checkbox" name="ptsd" value="ptsd" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Grave and Debilitating illnesses
+								  <input type="checkbox" name="grav" value="grave_illness" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Other
+								<input type="checkbox" name="oth" value="other" class="affected-by">
+								  <span class="checkmark"></span>
+								</label>
+							</div>
+						</div>
+						<div id="step11" class="show-it">
+							Do you presently use cannabis for relief? 
+							<select name="usr-use" id="11-a">
+								<option value="yes">Yes</option>
+								<option value="no">No</option>
+							</select>
+							<br>
+							<div id="11-b">How often?</div>
+							<div class="cannabis-radio" id="11-c">
+								<label class="custom-radio">Rarely
+								  <input type="radio" name="usage" value="rarely" class="howmuch">
+								  <span class="radiodot"></span>
+								</label>
+								<label class="custom-radio">A few times per month
+								  <input type="radio" name="usage" value="monthly" class="howmuch">
+								  <span class="radiodot"></span>
+								</label>
+								<label class="custom-radio">A few times per week
+								  <input type="radio" name="usage" value="weekly" class="howmuch">
+								  <span class="radiodot"></span>
+								</label>
+								<label class="custom-radio">Daily
+								  <input type="radio" name="usage" value="daily" class="howmuch">
+								  <span class="radiodot"></span>
+								</label>
+								<label class="custom-radio">Several times per day
+								  <input type="radio" name="usage" value="lots" class="howmuch">
+								  <span class="radiodot"></span>
+								</label>
+							</div>
+						</div>
+						<div id="step12"class="show-it">
+							How do you prefer to consume Cannabis? (check all that apply)
+							<div class="cannabis-usage">
+								<label class="custom-check">Extract - oils
+									<input type="checkbox" name="oils" value="oils" class="route">
+								  <span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Extract - butter
+									<input type="checkbox" name="butter" value="butter" class="route">
+									<span class="checkmark"></span>
+								</label>
+								
+								<label class="custom-check">Extract - rosin
+									<input type="checkbox" name="rosin" value="rosin" class="route">
+									<span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Raw - juicing
+									<input type="checkbox" name="juice" value="juice" class="route">
+									<span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Vaporizer
+									<input type="checkbox" name="vape" value="vape" class="route">
+									<span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Combustion (joints, bong, etc.)
+									<input type="checkbox" name="combust" value="combust" class="route">
+									<span class="checkmark"></span>
+								</label>
+							</div>
+						</div>
+						<div id="step13" class="show-it">
+						Do you ever obtain cannabis through non-legal means?
+							<select name="usr-obtain">
+								<option value="yes">Yes</option>
+								<option value="no">No</option>
+							</select>
+							<br>
+						If yes to previous, would you continue to do so if you were unable to obtain a prescription for cannabis?
+							<select name="usr-continue">
+								<option value="yes">Yes</option>
+								<option value="no">No</option>
+							</select>
+							<br>							
+						</div>
+						<div id="step14" class="show-it">
+						Are you interested in growing Cannabis?
+							<select name="grower" id="14-a">
+								<option value="yes">Yes</option>
+								<option value="no">No</option>
+							</select>
+							<div id="14-b">Who do you plan to grow Cannabis for? (check all that apply)</div>
+							<br>
+							<div id="14-c">
+								<label class="custom-check">Myself
+									<input type="checkbox" name="personal" value="self" class="for-who">
+									<span class="checkmark"></span>
+								</label>
+								<label class="custom-check">Someone else
+									<input type="checkbox" name="produces" value="others" class="for-who">
+									<span class="checkmark"></span>
+								</label>
+							</div>
+						</div>
+						<div id="step15" class="show-it">
+							<p>That's it!</p>
+							<p>If you are sure that all of the information you have entered is <strong>complete and accurate</strong>, click "Send" to submit your information.</p>  
+						</div>
+						<div id="conclusion" class="show-it">
+							<p>Success! Your information has been sent.</p>
+							<p>A member of our staff will contact you shortly to finalize your application.</p>
+							<p>Thank-you for Choosing InfoCannabis!</p>
+						</div>
+					</form>
+				</div>
+			</div>
+	</section>
+	<section id="three">
+		<div id="next" class="nav-button">
+			<div id="next-text">
+				<i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="previous" class="nav-button">
+			<div id="prev-text">
+				<i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i>
+			</div>
+		</div>
+	</section>	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

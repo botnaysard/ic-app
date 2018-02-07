@@ -1,0 +1,361 @@
+// variables //
+
+// colors //
+$primary: #4CAF50;
+$primary-dark: #388E3C;
+$primary-light: #C8E6C9;
+$accent: #607D8B;
+$text-icons: #FFFFFF;
+$primary-text: #212121; 
+$secondary-text: #757575;
+$divider: #BDBDBD;
+$attention: #F44336;
+$main-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+$button-sides: 4%;
+$button-bottom: 45%;
+
+// styles //
+
+html, body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+  color: $primary-text;
+  font-family: 'Gudea', sans-serif;
+}
+
+section {
+	width: 100%;
+	position: relative;
+}
+
+h3 {
+	margin: 0px;
+}
+
+span {
+	color: $primary-light;
+}
+
+// custom checkmark //
+
+.custom-check, .custom-radio {
+    display: block;
+    position: relative;
+    padding-left: 45px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* hide default checkbox */
+
+.custom-check input, .custom-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* create custom checkbox */
+
+.checkmark, .radiodot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    background-color: $text-icons;
+    border: 1px solid $divider;
+    border-radius: 50%;
+}
+
+/* mouse over */
+
+.custom-check:hover input ~ .checkmark, .custom-radio:hover input ~ .radiodot {
+    background-color: $primary-light;
+}
+
+/* when checked  */
+
+.custom-check input:checked ~ .checkmark {
+    background-color: $primary-dark;
+    border: 1px solid $primary-dark;
+}
+
+.custom-radio input:checked ~ .radiodot {
+	background-color: $primary-dark;
+	border: 1px solid $primary-dark;	
+}
+
+/* make checkmark (hidden when not checked) */
+
+.checkmark:after, .radiodot:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* show checkmark when checked */
+
+.custom-check input:checked ~ .checkmark:after, .custom-radio input:checked ~ .radiodot:after {
+    display: block;
+}
+
+/* style checkmark/radio button */
+
+.custom-check .checkmark:after {
+    left: 11px;
+    top: 5px;
+    width: 6px;
+    height: 15px;
+    border: solid $text-icons;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.custom-radio .radiodot:after {
+    left: 1px;
+    top: 1px;
+    width: 0px;
+    height: 0px;
+    background-color: $primary-dark;
+    border-radius: 50%;
+
+}
+
+// end custom checkmark //
+
+.text-green {
+	color: $text-icons;
+}
+
+#logo {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	z-index: 100;
+	box-shadow: $main-shadow;
+	height: 100px;
+	width: 100px;
+}
+
+#logo img {
+	max-width: 100px;
+}
+
+#one {
+	background-color: $primary;
+	height: 10%;
+	display: table;
+	z-index: 50;
+	box-shadow: $main-shadow;
+}
+
+#two {
+	background-color: $text-icons;
+	height: 80%;
+}
+
+#three {
+	background-color: $primary; /* or try $text-icons for this section */
+	height: 10%;
+	z-index: 50;
+}
+
+#breadcrumbs {
+	width: 100%;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	font: {
+		size: 1.5em;
+	}
+	color: $primary-light;
+	padding: 0 12.5%;
+}
+
+#section-title {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 1.6em;
+}
+
+#question-box {
+	position: absolute;
+  	left: 50%;
+  	top: 50%;
+  	-webkit-transform: translate(-50%, -50%);
+  	-moz-transform:    translate(-50%, -50%);
+  	-ms-transform:     translate(-50%, -50%);
+  	-o-transform:      translate(-50%, -50%);
+  	transform:         translate(-50%, -50%);
+  	width: auto;
+	font: {
+    	size: 2em;
+    }
+}
+
+#client-intake-form input:not([type=submit]), #client-intake-form select, textarea {
+	margin: 0 0 1.5em 0;
+	background-color: $text-icons;
+	border: 1px solid $divider;
+	padding: 0.1em;
+	color: $secondary-text;
+	border-radius: 2px;
+}
+
+#client-intake-form input:focus, textarea:focus {
+  outline-width: 1px;
+  outline-color: #02b25f;
+  border: 1px solid #02b25f;
+  border-radius: 2px;
+}
+
+#submit-button:focus {
+	outline: none;
+}
+
+#client-intake-form select:focus {
+	outline: none;
+	border: 1px solid #02b25f;
+
+}
+
+.free-text {
+	width: 100%;
+	height: 6em;
+}
+
+.nav-button {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	margin-top: 0.75em;
+	position: absolute;
+	background-color: $accent;
+	text-align: center;
+	display: table;
+	color: $text-icons;
+	font: {
+		size: 1.3em;
+	}
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.nav-button:hover {
+	cursor: pointer;
+}
+
+.nav-button:active {
+	transform: translate(0px, 1px);
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	border: none;
+}
+
+#next {
+	right: $button-sides;
+	bottom: $button-bottom;
+}
+
+#previous {
+	left: $button-sides;
+	bottom: $button-bottom;
+}
+
+#next-text, #prev-text {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#submit-button {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	color: $text-icons;
+	background-color: $attention;
+	border: none;
+}
+
+#submit-button:hover {
+	color: $text-icons;
+	border: none;
+}
+
+
+@for $i from 2 through 15 {
+  #step#{$i} { display: none; }
+}
+
+#conclusion,
+#previous {
+	display: none;
+}
+
+
+// styles for specific steps // 
+
+#step8 {
+	width: 100%;
+}
+
+.illness-container, .cannabis-usage, .cannabis-radio {
+	column-count: 2;
+	margin-top: 1em;
+}
+
+.make-table {
+	display: table !important;
+}
+
+#submit-button {
+  font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.5em;
+}
+
+/* MEDIA QUERIES */
+
+/* Hi-res displays with pixel doubling (retina, etc.) */
+
+/* Portrait */
+
+@media only screen 
+  and (-webkit-min-device-pixel-ratio: 1.5)
+  and (orientation: portrait) {
+  	#question-box {
+  		font-size: 2.5em;
+  		width: 70%;
+  	}
+
+  	.nav-button {
+  		height: 170px;
+  		width: 170px;
+  		font-size: 3em;
+  	}
+
+  	#submit-button {
+  		height: 170px;
+  		width: 170px;
+  		font-size: 1.6em;
+  	}
+}
+
+/* Landscape */
+@media only screen 
+  and (orientation: landscape)
+  and (-webkit-min-device-pixel-ratio: 1.5) {
+	#question-box {
+		font-size: 1em;}	
+}
+
+#inserted {
+	color: $primary-text;
+}
+
+.warning {
+	background: $attention; 
+}

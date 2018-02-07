@@ -104,7 +104,7 @@ $(document).ready(function(){
 			return this.value;
 		}).get();
 		var clientScore = 0;
-		var category = undefined;
+		var category = "";
 		var sexModifier = 0;
 		var illnessScore = 0;
 		var consumeScore = 0;
@@ -288,36 +288,6 @@ $(document).ready(function(){
 		category = "BASIC @ 1g/day"
 	}
 
-	// output to console //
-
-	console.log('submitted');
-	console.log('first: ' + firstName); 
-	console.log('last: ' + lastName); 
-	console.log('age: ' +age);
-	console.log('sex: ' + sex);
-	console.log('street: ' + address); 
-	console.log('city: ' + city);
-	console.log('province: ' + prov); 
-	console.log('postal code: ' + post); 
-	console.log('e-mail: ' + email); 
-	console.log('tel: ' +telephone); 
-	console.log('family doc: ' + doctor); 
-	console.log('doc city: ' + doctorCity); 
-	console.log('ailments: ' + diseases); 
-	console.log('substances: ' + substances); 
-	console.log('substance use pattern: ' + substanceDesc); 
-	console.log('current cannabis user: '+ currently); 
-	console.log('cannabis frequency: ' + frequency); 
-	console.log('preferred route: ' + route); 
-	console.log('illegal weed: ' + howObtained); 
-	console.log('illegal continue: ' + wouldContinue); 
-	console.log('grow interest: ' + cultivate); 
-	console.log('grow for: ' + consume);
-	console.log('sex score: ' + sexModifier);
-	console.log('illness score: ' +  illnessScore);
-	console.log('consumption score: ' + consumeScore);
-	console.log('score: ' + clientScore); 
-	console.log('recommeded tier: ' + category);
 	});
 
 	

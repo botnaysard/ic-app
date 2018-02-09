@@ -377,7 +377,64 @@ $(document).ready(function(){
 				var recommendation = document.getElementById('recinput');
 				recommendation.value = category;
 
-				document.intakeform.submit();
+				// compile variables into a single user profile
+
+				var newUser = {
+		            'firstname': firstName,
+		            'lastname' : lastName,
+		            'age' : age,
+		            'sex' : sex,
+		            'address' : address,
+		            'city' : city,
+		            'province' : prov,
+		            'postalcode' : post,
+		            'email' : email,
+		            'tel' : telephone,
+		            'familydoctor' : doctor,
+		            'doctorcity' : doctorCity,
+		            'diseases' : diseases,
+		            'othersubstance' : substances,
+		            'substancedetails' : substanceDesc,
+		            'cannabisuser' : currently,
+		            'cannabisfreq' : frequency,
+		            'cannabisroute' : route,
+		            'blackmarket' : howObtained,
+		            'blackmcontinue' : wouldContinue,
+		            'growinterest' : cultivate,
+		            'growfor' : consume,
+		            'formscore' : clientScore,
+		            'tier' : category
+        		}
+
+        		// send the consolidated profile //
+
+        		$.ajax({
+	            	type: 'POST',
+	            	data: newUser,
+	            	url: '/profile',
+	            	dataType: 'JSON'
+	        	}).done(function( response ) {
+
+	            // Check for successful (blank) response
+
+		            if (response.msg === '') {
+
+		                // Clear the form inputs
+		                $('#addUser fieldset input').val('');
+
+		                // Update the table
+		                populateTable();
+
+		            }
+		            else {
+
+		       	// If something goes wrong, alert the error message that our service returned
+		                alert('Error: ' + response.msg);
+
+	            	}
+	        	});
+
+				// document.intakeform.submit();
 				$('.nav-button').removeClass('make-table').hide();
 				$('#breadcrumbs').hide();
 				$('#step15').html('');
